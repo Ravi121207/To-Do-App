@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from.models import Task
 from django.urls import reverse
 
-# Create your views here.
 def task_list(request):
     task = Task.objects.all().order_by('-created_at')
     return render(request,'todo/task_list.html',{'task':task})
@@ -51,8 +50,3 @@ def task_toggle(request,pk):
         task.save()
     return redirect('todo:task_list')
         
-# def task_toggle(request, pk):
-#     task = Task.objects.get(id=pk)
-#     task.completed = not task.completed
-#     task.save()
-#     return redirect('/')
